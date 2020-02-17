@@ -1,0 +1,34 @@
+server:
+  port: 8888
+  servlet:
+    session:
+      timeout: 10s #Session的超时时间,默认最小1分钟,小于1分钟也是1分钟
+      cookie:
+        http-only: true # 浏览器脚本无法访问cookie 安全
+        secure: false #必须用https才能发送cookie
+
+spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/jpadata?useUnicode=true&characterEncoding=UTF8&useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: root
+  freemarker:
+    cache: false # 缓存配置 开发阶段应该配置为false 因为经常会改
+    suffix: .html # 模版后缀名 默认为ftl
+    charset: UTF-8 # 文件编码
+    template-loader-path: classpath:/templates/
+  security:
+    loginType: JSON
+
+
+
+logging:
+    config: classpath:log4j2-dev.xml
+
+mybatis:
+    configuration:
+      mapUnderscoreToCamelCase: true
